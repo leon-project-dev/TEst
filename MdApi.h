@@ -11,7 +11,7 @@
 
 extern "C"  // 以C的方式导出函数名
 {
-#pragma  region Api
+#pragma  region Api 文件
 	MDAPI_API CThostFtdcMdApi* CreateFtdcMdApi(const char* pszFlowPath = "CtpFlow/", const bool bIsUsingUdp = false, const bool bIsMulticast = false);
 	MDAPI_API MdSpi*		CreateMdSpi();
 	MDAPI_API void			RegisterSpi(CThostFtdcMdApi* api, MdSpi* pSpi);
