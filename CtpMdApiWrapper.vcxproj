@@ -48,8 +48,8 @@
     <OutDir>$(ProjectDir)Bin\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)Obj\$(Configuration)\</IntDir>
     <ExecutablePath>$(ExecutablePath)</ExecutablePath>
-    <LibraryPath>../CtpApi;$(LibraryPath)</LibraryPath>
-    <IncludePath>../CtpApi;$(IncludePath)</IncludePath>
+    <LibraryPath>CtpApi;$(LibraryPath)</LibraryPath>
+    <IncludePath>CtpApi;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
