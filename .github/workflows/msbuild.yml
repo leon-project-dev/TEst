@@ -34,7 +34,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
 
     - name: encoding
-      uses: chcp
+      run: chcp
 
 
     - name: Build
