@@ -6,6 +6,9 @@
     purpose:	定义 DLL 应用程序的导出函数。
 *********************************************************************/
 #pragma once
+#if _MSC_VER >= 1600      
+#pragma execution_character_set("utf-8")      
+#endif
 #include "pch.h"
 #include "MdSpi.h"
 
