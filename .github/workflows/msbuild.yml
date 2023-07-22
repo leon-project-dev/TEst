@@ -39,6 +39,9 @@ jobs:
     - name: encoding
       run: chcp
 
+    - name: msbuild version
+      run: msbuild -version
+
 
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
