@@ -45,6 +45,6 @@ jobs:
       working-directory: ${{env.GITHUB_WORKSPACE}}
       # Add additional options to the MSBuild command line here (like platform or verbosity level).
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
-      run: chcp 65001; msbuild CtpMdApiWrapper.vcxproj /p:Platform=x64
+      run: chcp 936; msbuild CtpMdApiWrapper.vcxproj /p:Platform=x64
 
    
