@@ -68,8 +68,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalOptions>
-      </AdditionalOptions>
+      <AdditionalOptions>/utf-8</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
