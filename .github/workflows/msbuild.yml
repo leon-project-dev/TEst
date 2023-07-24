@@ -28,10 +28,10 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    #- uses: actions/checkout@v3
+    - uses: actions/checkout@v3
 
-    #- name: Add MSBuild to PATH
-    #  uses: microsoft/setup-msbuild@v1.1      
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v1.1      
     
     
     - name: encoding
@@ -63,10 +63,28 @@ jobs:
       
 
 
-    #- name: Build
-    #  working-directory: ${{env.GITHUB_WORKSPACE}}
-    #  # Add additional options to the MSBuild command line here (like platform or verbosity level).
-    #  # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
-    #  run: chcp 936; msbuild CtpMdApiWrapper.vcxproj /p:Platform=x64
+    - name: Build
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      # Add additional options to the MSBuild command line here (like platform or verbosity level).
+      # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
+      run: chcp 936; msbuild CtpMdApiWrapper.vcxproj /p:Platform=x64
+
+    - name: ´´½¨ tag
+      run: git tag V1.0.0.1
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+      with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            Changes in this Release
+            - First Change
+            - Second Change
+          draft: false
+          prerelease: false
 
    
