@@ -33,8 +33,7 @@ jobs:
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.1      
       
-    - name: check file encoding
-      uses: mindbox-cloud/check-encoding
+    
 
     - name: encoding
       run: chcp
