@@ -28,17 +28,17 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v3
+    #- uses: actions/checkout@v3
 
-    - name: Add MSBuild to PATH
-      uses: microsoft/setup-msbuild@v1.1      
+    #- name: Add MSBuild to PATH
+    #  uses: microsoft/setup-msbuild@v1.1      
     
     
     - name: encoding
       run: chcp
 
-    - name: msbuild version
-      run: msbuild -version
+    #- name: msbuild version
+    #  run: msbuild -version
 
     # coscmd 安装
     - name: Install coscmd
@@ -46,7 +46,7 @@ jobs:
 
     #coscmd 配置
     - name: coscmd 全局配置
-      run: coscmd config -a ${{secrets.CDN_SECRETID}} -s ${{secrets.CDN_SECRETKEY}} -b ${{secrets.CDN_BUCKET}} -r ap-chengdu
+      run: coscmd config -a ${{secrets.CDN_SECRETID}} -s ${{secrets.CDN_SECRETKEY}} -b ${{secrets.CDN_BUCKET}} -r ap-singapore
 
 
 
@@ -60,10 +60,10 @@ jobs:
       
 
 
-    - name: Build
-      working-directory: ${{env.GITHUB_WORKSPACE}}
-      # Add additional options to the MSBuild command line here (like platform or verbosity level).
-      # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
-      run: chcp 936; msbuild CtpMdApiWrapper.vcxproj /p:Platform=x64
+    #- name: Build
+    #  working-directory: ${{env.GITHUB_WORKSPACE}}
+    #  # Add additional options to the MSBuild command line here (like platform or verbosity level).
+    #  # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
+    #  run: chcp 936; msbuild CtpMdApiWrapper.vcxproj /p:Platform=x64
 
    
