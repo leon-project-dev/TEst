@@ -34,7 +34,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.1      
       
     - name: check file encoding
-      uses: actions/check-encoding
+      uses: mindbox-cloud/check-encoding
 
     - name: encoding
       run: chcp
