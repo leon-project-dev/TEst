@@ -32,14 +32,32 @@ jobs:
 
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.1      
-      
     
-
+    
     - name: encoding
       run: chcp
 
     - name: msbuild version
       run: msbuild -version
+
+    # coscmd 安装
+    - name: Install coscmd
+      run: pip install coscmd;coscmd -v;
+
+    #coscmd 配置
+    - name: coscmd 全局配置
+      run: coscmd config -a ${{secrets.CDN_SECRETID}} -s ${{secrets.CDN_SECRETKEY}} -b ${{secrets.CDN_BUCKET}} -r ap-chengdu
+
+
+
+    # coscmd download file
+    - name: Download ClickOnce Bootstrapper file
+      run: mkdir tmp/;coscmd download download/DotNetSDKX64.zip ./tmp/DotNetSDKX64.zip
+
+    # 解压文件并 copy 到 ClickOnce Bootstrapper 目录
+    - name: unzip file and copy file to ClickOnce Bootstrapper
+      run: cd tmp/; powershell Expand-Archive -Path ./DotNetSDKX64.zip -DestinationPath ./;cd "C:\Program Files (x86)\Microsoft SDKs\ClickOnce Bootstrapper"; dir;
+      
 
 
     - name: Build
