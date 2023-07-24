@@ -56,7 +56,10 @@ jobs:
 
     # 解压文件并 copy 到 ClickOnce Bootstrapper 目录
     - name: unzip file and copy file to ClickOnce Bootstrapper
-      run: cd tmp/; powershell Expand-Archive -Path ./DotNetSDKX64.zip -DestinationPath ./;cd "C:\Program Files (x86)\Microsoft SDKs\ClickOnce Bootstrapper"; dir;
+      run: cd tmp/; powershell Expand-Archive -Path ./DotNetSDKX64.zip -DestinationPath ./; dir; mkdir "C:\Program Files (x86)\Microsoft SDKs\ClickOnce Bootstrapper\Packages\DotNetSDKX64"; xcopy /S /Q /Y /E .\DotNetSDKX64\* "C:\Program Files (x86)\Microsoft SDKs\ClickOnce Bootstrapper\Packages\DotNetSDKX64\"
+
+    - name:  ClickOnce Bootstrapper 目录
+      run: dir "C:\Program Files (x86)\Microsoft SDKs\ClickOnce Bootstrapper\Packages\"
       
 
 
