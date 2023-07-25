@@ -67,10 +67,13 @@ jobs:
       working-directory: ${{env.GITHUB_WORKSPACE}}
       # Add additional options to the MSBuild command line here (like platform or verbosity level).
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
-      run: chcp 936; msbuild CtpMdApiWrapper.vcxproj /p:Platform=x64
+      run: chcp 936; msbuild CtpMdApiWrapper.vcxproj /p:Platform=x64 
 
-    - name: 创建 tag
-      run: git tag V1.0.0.1
+    - name: zip out file
+      run: powershell Compress-Archive -Path ./CtpApi -DestinationPath ./CtpApi.zip
+
+    #- name: 创建 tag
+    #  run: git tag V1.0.0.1
 
     - name: Create Release
       id: create_release
@@ -78,13 +81,30 @@ jobs:
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
       with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: V1.0.0.1
+          release_name: V1.0.0.1
           body: |
             Changes in this Release
             - First Change
             - Second Change
           draft: false
           prerelease: false
+
+    - name: Upload release asset
+      uses: actions/upload-release-asset@v1
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./CtpApi.zip
+          asset_name: CtpApi.zip
+          asset_content_type: application/zip
+
+    - name: Publish release
+      uses: StuYarrow/publish-release@v1.1.2
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+          id: ${{ steps.create_release.outputs.id }}
 
    
