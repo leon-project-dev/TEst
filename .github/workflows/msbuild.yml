@@ -40,14 +40,21 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v3
+    #- uses: actions/checkout@v3
 
-    - name: Add MSBuild to PATH
-      uses: microsoft/setup-msbuild@v1.1      
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 2
+
+    - name: Check out Tag V 1.0.0.1
+      run: git checkout tags/V1.0.0.1;dir;
+
+    #- name: Add MSBuild to PATH
+    #  uses: microsoft/setup-msbuild@v1.1      
     
     
-    - name: encoding
-      run: chcp
+    #- name: encoding
+    #  run: chcp
 
     #- name: msbuild version
     #  run: msbuild -version
@@ -81,20 +88,20 @@ jobs:
     #  # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
     #  run: chcp 936; msbuild CtpMdApiWrapper.vcxproj /p:Platform=x64 
 
-    - name: zip out file
-      run: powershell Compress-Archive -Path ./CtpApi -DestinationPath ./CtpApi.zip
+    #- name: zip out file
+    #  run: powershell Compress-Archive -Path ./CtpApi -DestinationPath ./CtpApi.zip
 
-    #- name: 创建 tag
-    #  run: git tag V1.0.0.1
+    ##- name: 创建 tag
+    ##  run: git tag V1.0.0.1
 
-    - name: Upload binaries to release
-      uses: svenstaro/upload-release-action@v2
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ./CtpApi.zip
-        asset_name: CtpApi.zip
-        tag: V1.0.0.1
-        overwrite: true
-        body: "V1.0.0.1"
+    #- name: Upload binaries to release
+    #  uses: svenstaro/upload-release-action@v2
+    #  with:
+    #    repo_token: ${{ secrets.GITHUB_TOKEN }}
+    #    file: ./CtpApi.zip
+    #    asset_name: CtpApi.zip
+    #    tag: V1.0.0.1
+    #    overwrite: true
+    #    body: "V1.0.0.1"
 
    
