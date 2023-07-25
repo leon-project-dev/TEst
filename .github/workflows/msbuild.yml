@@ -47,7 +47,7 @@ jobs:
         fetch-depth: 2
 
     - name: Check out Tag V 1.0.0.1
-      run: git checkout V1.0.0.1;dir;
+      run: git fetch;git checkout V1.0.0.1;dir;
 
     #- name: Add MSBuild to PATH
     #  uses: microsoft/setup-msbuild@v1.1      
