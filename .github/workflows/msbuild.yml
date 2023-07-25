@@ -53,25 +53,25 @@ jobs:
     #  run: msbuild -version
 
     # coscmd 安装
-    - name: Install coscmd
-      run: pip install coscmd;coscmd -v;
+    #- name: Install coscmd
+    #  run: pip install coscmd;coscmd -v;
 
-    #coscmd 配置
-    - name: coscmd 全局配置
-      run: coscmd config -a ${{secrets.CDN_SECRETID}} -s ${{secrets.CDN_SECRETKEY}} -b ${{secrets.CDN_BUCKET}} -r ap-singapore
+    ##coscmd 配置
+    #- name: coscmd 全局配置
+    #  run: coscmd config -a ${{secrets.CDN_SECRETID}} -s ${{secrets.CDN_SECRETKEY}} -b ${{secrets.CDN_BUCKET}} -r ap-singapore
 
 
 
-    # coscmd download file
-    - name: Download ClickOnce Bootstrapper file
-      run: mkdir tmp/;coscmd download download/DotNetSDKX64.zip ./tmp/DotNetSDKX64.zip
+    ## coscmd download file
+    #- name: Download ClickOnce Bootstrapper file
+    #  run: mkdir tmp/;coscmd download download/DotNetSDKX64.zip ./tmp/DotNetSDKX64.zip
 
-    # 解压文件并 copy 到 ClickOnce Bootstrapper 目录
-    - name: unzip file and copy file to ClickOnce Bootstrapper
-      run: cd tmp/; powershell Expand-Archive -Path ./DotNetSDKX64.zip -DestinationPath ./; dir; mkdir "C:\Program Files (x86)\Microsoft SDKs\ClickOnce Bootstrapper\Packages\DotNetSDKX64"; xcopy /S /Q /Y /E .\DotNetSDKX64\* "C:\Program Files (x86)\Microsoft SDKs\ClickOnce Bootstrapper\Packages\DotNetSDKX64\"
+    ## 解压文件并 copy 到 ClickOnce Bootstrapper 目录
+    #- name: unzip file and copy file to ClickOnce Bootstrapper
+    #  run: cd tmp/; powershell Expand-Archive -Path ./DotNetSDKX64.zip -DestinationPath ./; dir; mkdir "C:\Program Files (x86)\Microsoft SDKs\ClickOnce Bootstrapper\Packages\DotNetSDKX64"; xcopy /S /Q /Y /E .\DotNetSDKX64\* "C:\Program Files (x86)\Microsoft SDKs\ClickOnce Bootstrapper\Packages\DotNetSDKX64\"
 
-    - name:  ClickOnce Bootstrapper 目录
-      run: dir "C:\Program Files (x86)\Microsoft SDKs\ClickOnce Bootstrapper\Packages\"
+    #- name:  ClickOnce Bootstrapper 目录
+    #  run: dir "C:\Program Files (x86)\Microsoft SDKs\ClickOnce Bootstrapper\Packages\"
       
 
 
@@ -92,7 +92,7 @@ jobs:
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: ./CtpApi.zip
-        asset_name: CtpApi
+        asset_name: CtpApi.zip
         tag: V1.0.0.1
         overwrite: true
         body: "V1.0.0.1"
