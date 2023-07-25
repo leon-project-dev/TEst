@@ -46,13 +46,8 @@ jobs:
     #  with:
     #    fetch-depth: 2
 
-    - name: Checkout github-actions-gitops-autover to the depth of tag 0.1.6
-      uses: AlexAtkinson/github-action-checkout-from-tag@latest
-      id: checkout
-      with:
-        repo: https://github.com/leon-project-dev/TEst.git
-        tag: V1.0.0.1
-        dir: ./
+    - name: Check out Tag V 1.0.0.1
+      run: git checkout https://github.com/leon-project-dev/TEst.git V1.0.0.1;dir;
 
     #- name: Add MSBuild to PATH
     #  uses: microsoft/setup-msbuild@v1.1      
